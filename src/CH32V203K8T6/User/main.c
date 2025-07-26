@@ -45,5 +45,7 @@ int main(void)
 
     while(1)
     {
+        printf("CH32V203 Develop\n");
+        Delay_Ms(1000);
     }
 }
