@@ -16,6 +16,7 @@
 
 int main(void)
 {
+    bool ret;
     uint8_t val;
 
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
@@ -32,11 +33,11 @@ int main(void)
 
     while(1)
     {
-        val = hw_usart_get_byte();
-        if(val != 0x00) {
+        ret = hw_usart_get_byte(&val);
+        if(ret != false) {
             printf("[DEBUG] UASRT RX = %c\r\n", val);
         }
-        Delay_Ms(1000);
+        // Delay_Ms(1000);
     }
 
     return 0;

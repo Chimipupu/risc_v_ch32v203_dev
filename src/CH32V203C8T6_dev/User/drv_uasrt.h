@@ -13,11 +13,14 @@
 #define DRV_UASRT_H
 
 #include <stdint.h>
+#include <string.h>
 #include "stdbool.h"
 #include "stdio.h"
 #include "ch32v20x.h"
 
-uint8_t hw_usart_get_byte(void);
+#define USART_RX_BUF_SIZE       128
+
+bool hw_usart_get_byte(uint8_t *p_val);
 void hw_usart_init(void);
 
 #endif // DRV_UASRT_H
