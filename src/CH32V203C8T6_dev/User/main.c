@@ -1,49 +1,43 @@
-/********************************** (C) COPYRIGHT *******************************
- * File Name          : main.c
- * Author             : WCH
- * Version            : V1.0.0
- * Date               : 2021/06/06
- * Description        : Main program body.
- *********************************************************************************
- * Copyright (c) 2021 Nanjing Qinheng Microelectronics Co., Ltd.
- * Attention: This software (modified or not) and binary are used for 
- * microcontroller manufactured by Nanjing Qinheng Microelectronics.
- *******************************************************************************/
-
-/*
- *@Note
- *USART Print debugging routine:
- *USART1_Tx(PA9).
- *This example demonstrates using USART1(PA9) as a print debug port output.
- *
+/**
+ * @file main.c
+ * @author Chimipupu(https://github.com/Chimipupu)
+ * @brief  CH32V203 メイン
+ * @version 0.1
+ * @date 2025-08-06
+ * 
+ * @copyright Copyright (c) 2025 Chimipupu All Rights Reserved.
+ * 
  */
 
+#include "stdio.h"
+#include "ch32v20x.h"
 #include "debug.h"
+#include "drv_uasrt.h"
 
-/* Global typedef */
-
-/* Global define */
-
-/* Global Variable */
-
-/*********************************************************************
- * @fn      main
- *
- * @brief   Main program.
- *
- * @return  none
- */
 int main(void)
 {
+    uint8_t val;
+
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
-    USART_Printf_Init(115200);
+
+    // USRAT初期化
+    hw_usart_init();
+
     printf("SystemClk:%d\r\n", SystemCoreClock);
     printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
-    printf("This is printf example\r\n");
+
+    printf("[DEBUG] CH32V203C8T6 Develop\r\n");
 
     while(1)
     {
+        val = hw_usart_get_byte();
+        if(val != 0x00) {
+            printf("[DEBUG] UASRT RX = %c\r\n", val);
+        }
+        Delay_Ms(1000);
     }
+
+    return 0;
 }
