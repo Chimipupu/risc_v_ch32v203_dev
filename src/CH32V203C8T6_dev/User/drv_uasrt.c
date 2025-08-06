@@ -35,12 +35,6 @@ void USART1_IRQHandler(void)
 /**
  * @brief USART受信ラッパー
  * 
- * @return uint8_t 
- */
-
-/**
- * @brief USART受信ラッパー
- * 
  * @param p_val データポインタ
  * @return true 受信データあり
  * @return false 受信データなし
@@ -101,4 +95,21 @@ void hw_usart_init(void)
     nvic.NVIC_IRQChannelCmd = ENABLE;
     NVIC_Init(&nvic);
     USART_Cmd(USART1, ENABLE);
+}
+
+/**
+ * @brief USART 受信文字列 表示関数
+ * 
+ */
+void hw_usart_rx_data_print(void)
+{
+    bool ret;
+    uint8_t val;
+
+    ret = hw_usart_get_byte(&val);
+
+    if(ret != false) {
+        printf("%c", val);
+        ret = false;
+    }
 }

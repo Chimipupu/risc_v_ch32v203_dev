@@ -16,9 +16,6 @@
 
 int main(void)
 {
-    bool ret;
-    uint8_t val;
-
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
@@ -33,11 +30,7 @@ int main(void)
 
     while(1)
     {
-        ret = hw_usart_get_byte(&val);
-        if(ret != false) {
-            printf("[DEBUG] UASRT RX = %c\r\n", val);
-        }
-        // Delay_Ms(1000);
+        hw_usart_rx_data_print();
     }
 
     return 0;

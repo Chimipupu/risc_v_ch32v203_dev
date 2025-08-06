@@ -22,5 +22,6 @@
 
 bool hw_usart_get_byte(uint8_t *p_val);
 void hw_usart_init(void);
+void hw_usart_rx_data_print(void);
 
 #endif // DRV_UASRT_H
