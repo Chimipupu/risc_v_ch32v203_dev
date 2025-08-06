@@ -105,11 +105,13 @@ void hw_usart_rx_data_print(void)
 {
     bool ret;
     uint8_t val;
+    uint16_t tx_val;
 
     ret = hw_usart_get_byte(&val);
 
     if(ret != false) {
-        printf("%c", val);
+        tx_val = (uint16_t)val;
+        USART_SendData(USART1, tx_val);
         ret = false;
     }
 }
