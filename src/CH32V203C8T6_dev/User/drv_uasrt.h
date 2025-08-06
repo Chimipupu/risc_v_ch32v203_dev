@@ -12,16 +12,18 @@
 #ifndef DRV_UASRT_H
 #define DRV_UASRT_H
 
+#include <stdio.h>
 #include <stdint.h>
 #include <string.h>
-#include "stdbool.h"
-#include "stdio.h"
-#include "ch32v20x.h"
+#include <stdbool.h>
 
-#define USART_RX_BUF_SIZE       128
+#include <ch32v20x.h>
+
+#define USART_RX_BUF_SIZE       32
 
 bool hw_usart_get_byte(uint8_t *p_val);
 void hw_usart_init(void);
 void hw_usart_rx_data_print(void);
+uint8_t hw_usart_get_char(void);
 
 #endif // DRV_UASRT_H

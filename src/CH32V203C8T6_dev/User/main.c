@@ -11,7 +11,9 @@
 
 #include "stdio.h"
 #include "ch32v20x.h"
+
 #include "debug.h"
+#include "dbg_com.h"
 #include "drv_uasrt.h"
 
 int main(void)
@@ -20,17 +22,18 @@ int main(void)
     SystemCoreClockUpdate();
     Delay_Init();
 
-    // USRAT初期化
+    // USRAT初期化 115200 8N1(TX=PA9ピン, RX=PA10ピン)
     hw_usart_init();
 
-    printf("SystemClk:%d\r\n", SystemCoreClock);
-    printf( "ChipID:%08x\r\n", DBGMCU_GetCHIPID() );
+    // printf("[DEBUG] CH32V203F8P6 Develop\r\n");
 
-    printf("[DEBUG] CH32V203C8T6 Develop\r\n");
+    // デバッグモニタ 初期化
+    dbg_com_init();
 
     while(1)
     {
-        hw_usart_rx_data_print();
+        // デバッグモニタ メイン
+        dbg_com_main();
     }
 
     return 0;

@@ -115,3 +115,29 @@ void hw_usart_rx_data_print(void)
         ret = false;
     }
 }
+
+/**
+ * @brief USART受信ラッパー
+ * 
+ * @param p_val データポインタ
+ * @return true 受信データあり
+ * @return false 受信データなし
+ */
+
+/**
+ * @brief get_char()と同じ機能のAPI
+ * 
+ * @return uint8_t 
+ */
+uint8_t hw_usart_get_char(void)
+{
+    volatile uint8_t val = 0;
+
+    if (s_rx_data_size > 0) {
+        val = s_rx_buf[s_rx_buf_read_idx];
+        s_rx_buf_read_idx = (s_rx_buf_read_idx + 1) % USART_RX_BUF_SIZE;
+        s_rx_data_size--;
+    }
+
+    return val;
+}
