@@ -8,23 +8,26 @@ WCH製 RISC-Vマイコン CH32V203の評価F/W個人開発リポジトリ
 - 評価基板
   - `CH32Vx03C-R0-1V0`
 
-- マイコン ... 型番:[CH32V203K8T6](https://akizukidenshi.com/catalog/g/g118063/)🔗
+- マイコン ... 型番 : `CH32V203C8T6`
   - CPU ... [QingKeV4B (32bit RISC-V RV32IMAC)](https://www.wch-ic.com/downloads/QingKeV4_Processor_Manual_PDF.html)🔗
   - ROM ... 64KB
   - RAM ... 20KB
   - Clock ... 144MHz
-  - GPIO ... 26本
+  - GPIO ... 37本
   - DMA ... x8ch
-  - I2C ... x1ch
-  - SPI ... x1ch
+  - I2C ... x2ch
+  - SPI ... x2ch
   - UART ... x2ch
   - CAN
   - ADC ... 12bit SAR x10ch
-  - タイマー ... 16bit x4本
+  - オペアンプ ... x2ch
+  - タイマー
+    - 高機能タイマー 16bit x1ch
+    - 汎用タイマー 16bit x3ch
   - SysTick ... 64bit
-  - WDT ... x2ch
+  - WDT ... x2ch(WWDG, IWSG)
   - RTC
-  - USB
+  - USB ... FS Host/Device
 
 ### S/W
 

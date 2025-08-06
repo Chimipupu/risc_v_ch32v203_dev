@@ -4,13 +4,12 @@
 			"path": "."
 		},
 		{
-			"name": "CH32V203K8T6",
+			"name": "CH32V203C8T6_dev",
 			"path": "../"
 		}
 	],
 	"settings": {
 		"mrs.workspace.type": "project",
-		"mrs.init.arg": "",
 		"files.associations": {
 			"*.c": "c",
 			"*.h": "cpp",
