@@ -3,7 +3,7 @@
  * @author Chimipupu(https://github.com/Chimipupu)
  * @brief デバッグモニタのコア処理
  * @version 0.1
- * @date 2025-06-13
+ * @date 2025-08-31
  * 
  * @copyright Copyright (c) 2025 Chimipupu All Rights Reserved.
  * 
@@ -330,8 +330,10 @@ void dbg_com_main(void)
         // Delete処理
         delete_char_at_cursor();
     } else if (c == KEY_ESC) { // ESC
+        Delay_Ms(1);
         c = hw_usart_get_char();
         if (c == KEY_ANSI_ESC) { // ANSI escape sequence
+            Delay_Ms(1);
             c = hw_usart_get_char();
             if (c == KEY_UP) { // キーボードの上矢印
                 if (s_history_pos < s_history_count - 1) {

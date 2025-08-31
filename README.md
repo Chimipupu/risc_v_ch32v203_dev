@@ -47,7 +47,7 @@ WCH製 RISC-Vマイコン CH32V203の評価F/W個人開発リポジトリ
 #### ICSP
 
 - [WCH-LinkE <--> 評価基板]
-  - SWDIO <--> PD13ピン
+  - SWDIO <--> PA13ピン
   - SWCLK <--> PA14ピン
   - GND <--> GND
 
