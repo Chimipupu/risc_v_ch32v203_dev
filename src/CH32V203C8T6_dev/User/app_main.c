@@ -10,8 +10,7 @@
  */
 #include "app_main.h"
 #include "dbg_com.h"
-
-// #include "drv_tim.h"
+#include "drv_tim.h"
 #include "dbg_com.h"
 
 // extern bool g_is_tim_cnt_up;
@@ -73,7 +72,7 @@ void show_mem_dump(uint32_t dump_addr, uint32_t dump_size)
     }
 }
 
-#if 0
+#if 1
 /**
  * @brief 関数の実行時間を計測する
  * 

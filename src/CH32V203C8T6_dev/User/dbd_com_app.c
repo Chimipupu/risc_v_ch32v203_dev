@@ -11,7 +11,7 @@
 
 #include "dbg_com.h"
 #include "ansi_esc.h"
-// #include "drv_tim.h"
+#include "drv_tim.h"
 #include "app_main.h"
 
 #define MCU_NAME               "CH32V203C8T6"
@@ -95,9 +95,11 @@ static void cmd_system(dbg_cmd_args_t *p_args)
     printf("\n[Clock Info]\n");
     printf("System Clock : %d MHz\r\n", SystemCoreClock / 1000000);
 
-    // volatile uint32_t end_cnt = (uint32_t)drv_get_tim_cnt();
-    // volatile uint32_t proc_time = get_proc_time(start_cnt, end_cnt);
-    // printf("proc time : %u us\n", proc_time);
+    volatile uint32_t start_cnt = (uint32_t)drv_get_tim_cnt();
+    Delay_Us(100);
+    volatile uint32_t end_cnt = (uint32_t)drv_get_tim_cnt();
+    volatile uint32_t proc_time = get_proc_time(start_cnt, end_cnt);
+    printf("proc time : %u us\n", proc_time);
 }
 
 static void cmd_mem_dump(dbg_cmd_args_t *p_args)

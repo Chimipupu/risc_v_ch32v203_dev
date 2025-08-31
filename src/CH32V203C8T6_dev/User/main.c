@@ -15,12 +15,19 @@
 #include "debug.h"
 #include "dbg_com.h"
 #include "drv_uasrt.h"
+#include "drv_tim.h"
 
 int main(void)
 {
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_1);
     SystemCoreClockUpdate();
     Delay_Init();
+
+    // [タイマー初期化]
+    // クロック源 : 144MHz
+    // タイマークロック : 144MHz / プリスケーラで144分周 = 1MHz = 1us
+    // カウントアップ : 65535us = 65.535ms
+    drv_tim_init(TIM_CKD_DIV1, 65535, 144);
 
     // USRAT初期化 115200 8N1(TX=PA9ピン, RX=PA10ピン)
     hw_usart_init();

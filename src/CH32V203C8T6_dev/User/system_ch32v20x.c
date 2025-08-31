@@ -129,6 +129,7 @@ void SystemInit (void)
  */
 void SystemCoreClockUpdate (void)
 {
+  uint8_t idx;
   uint32_t tmp = 0, pllmull = 0, pllsource = 0, Pll_6_5 = 0;
 
   tmp = RCC->CFGR0 & RCC_SWS;
@@ -192,7 +193,8 @@ void SystemCoreClockUpdate (void)
       break;
   }
 
-  tmp = AHBPrescTable[((RCC->CFGR0 & RCC_HPRE) >> 4)];
+  idx = ((RCC->CFGR0 & RCC_HPRE) >> 4);
+  tmp = AHBPrescTable[idx];
   SystemCoreClock >>= tmp;
 }
 

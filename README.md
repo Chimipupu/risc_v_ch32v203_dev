@@ -40,11 +40,11 @@ WCH製 RISC-Vマイコン CH32V203の評価F/W個人開発リポジトリ
 
 ### デバッグ
 
-- デバッグ ... `ICSP`
+- デバッグ ... `SWD`
   - ハマりポイント
     - `mcu code-protect`は必ず外すこと
 
-#### ICSP
+#### SWD
 
 - [WCH-LinkE <--> 評価基板]
   - SWDIO <--> PA13ピン
